@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/InstantiateMCL.unity
+  isLoaded: 1
+  isActive: 1

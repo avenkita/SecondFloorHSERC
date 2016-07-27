@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic; //this is where the List<T>() class comes from
 using System.Xml;
 
-//A code which can read secondfloorUnity.xml from Resources and instantiate walls. 
+//A code which can read MCLspaceUnity.xml from Resources and instantiate walls. 
 //Parenting of the objects is done through retaining the roomid and making it the name of the parent gameobject.
 
 
-public class ReadMCL : MonoBehaviour {
+public class ReadMCLAish : MonoBehaviour {
 
     public static List<Wall> ListofWalls = new List<Wall>();
+
 
     void Start()
     {
@@ -43,7 +44,7 @@ public class ReadMCL : MonoBehaviour {
 
     public static void ReadWallsXML()
     {
-        TextAsset textXML = (TextAsset)Resources.Load("secondfloorUnity", typeof(TextAsset));
+        TextAsset textXML = (TextAsset)Resources.Load("MCLspaceUnity", typeof(TextAsset));
         XmlDocument xmldoc = new XmlDocument();
         xmldoc.LoadXml(textXML.text);
         XmlNodeList transformList = xmldoc.GetElementsByTagName("Walls");

@@ -8,12 +8,11 @@ using System.ComponentModel;
 using System.Linq;
 
 
-//Code which can read Alexandr's XML file (named secondFloor2.xml in Resources) and write into secondfloorUnity.xml
-//PROBLEM: line 25: the textwriter requires the correct directory path, so it must be modified to the user's computer info.
-//currently it can only read the "room" tags, not the "obstacles"
-//It is also not to scale based on meters. Diagram about 20 to 23 times as large as real life dimensions.
+//Code which can read Aishwarya's XML file (named MCLyellow.xml in Resources) and write into MCLspaceUnity.xml
+//PROBLEM: line 24: the textwriter requires the correct directory path, so it must be modified to the user's computer info.
+//Only has some of the walls, made primarily for demonstration during the meeting on July 25.
 
-public class CompileMCL : MonoBehaviour {
+public class CompileMCLAish : MonoBehaviour {
 
     public static List<SCWalls> ListofWalls = new List<SCWalls>();
 
@@ -22,7 +21,7 @@ public class CompileMCL : MonoBehaviour {
     {
         List<SCWalls> WallsList = getWalls();
 
-        XmlTextWriter writer = new XmlTextWriter("C:\\Users\\Aishwarya\\Desktop\\SecondFloorHSERC\\SecondFloorMCL\\Assets\\Resources\\secondfloorUnity.xml", Encoding.UTF8);
+        XmlTextWriter writer = new XmlTextWriter("C:\\Users\\Aishwarya\\Desktop\\SecondFloorHSERC\\SecondFloorMCL\\Assets\\Resources\\MCLspaceUnity.xml", Encoding.UTF8);
         writer.Formatting = Formatting.Indented;
         writer.WriteStartElement("Walls");
 
@@ -41,25 +40,25 @@ public class CompileMCL : MonoBehaviour {
                 angle = Mathf.Atan((cw.Zcoord1 - cw.Zcoord2) / (cw.Xcoord1 - cw.Xcoord2)) * 180 / Mathf.PI;
                 angle = -angle + 360;
                 xscale = length;
-                zscale = 2f;
+                zscale = 0.1f;
             }
             else
             {
-                if (xscale == 0) { xscale = zscale; zscale = 2f; angle = 90; }
-                else { zscale = 2f; angle = 0; }
+                if (xscale == 0) { xscale = zscale; zscale = 0.1f; angle = 90; }
+                else { zscale = 0.1f; angle = 0; }
             }
 
             cw.Name = (wallnumber + 1).ToString();
             cw.PositionX = xposition.ToString();
-            cw.PositionY = "20";
+            cw.PositionY = "1.445";
             cw.PositionZ = zposition.ToString();
             cw.ScaleX = xscale.ToString();
-            cw.ScaleY = "40";
+            cw.ScaleY = "2.573039";
             cw.ScaleZ = zscale.ToString();
             cw.RotateX = "0";
             cw.RotateY = angle.ToString();
             cw.RotateZ = "0";
-            
+
             writer.WriteStartElement("Wall");
             writer.WriteStartElement("Name"); writer.WriteString(cw.Name); writer.WriteEndElement();
             writer.WriteStartElement("RoomName"); writer.WriteString(cw.roomid); writer.WriteEndElement();
@@ -83,11 +82,10 @@ public class CompileMCL : MonoBehaviour {
     {
         bool varflag = false;
         string roomid = " ";
-      //  string obstacleid = " ";
-        TextAsset textXML = (TextAsset)Resources.Load("secondFloor2", typeof(TextAsset));
+        TextAsset textXML = (TextAsset)Resources.Load("MCLyellow", typeof(TextAsset));
         XmlDocument xml = new XmlDocument();
         xml.LoadXml(textXML.text);
-        XmlNodeList transformList = xml.GetElementsByTagName("simulatedworld"); 
+        XmlNodeList transformList = xml.GetElementsByTagName("simulatedworld");
 
         foreach (XmlNode transformInfo in transformList) //has just the simulated world tag!
         {
@@ -103,7 +101,6 @@ public class CompileMCL : MonoBehaviour {
                     {
                         XmlNodeList transformcontent4 = transformItems3.ChildNodes; //gets the tags inside the wall tag (point and door)
                         if (transformItems3.Name == "roomid") { roomid = transformItems3.InnerText; continue; }
-                     //   if (transformItems3.Name == "obstacleid") { continue; }
                         SCWalls wallsimulation = new SCWalls();
                         foreach (XmlNode transformItems4 in transformcontent4)
                         {
@@ -112,8 +109,8 @@ public class CompileMCL : MonoBehaviour {
                                 XmlNodeList transformcontent5 = transformItems4.ChildNodes; //gets the tags inside point tag (xcoord and ycoord)
                                 foreach (XmlNode transformItems5 in transformcontent5)
                                 {
-                                    if (transformItems5.Name == "xcoord") { wallsimulation.Zcoord1/*wallsimulation.Xcoord1*/ = float.Parse(transformItems5.InnerText); }
-                                    if (transformItems5.Name == "ycoord") { wallsimulation.Xcoord1/*wallsimulation.Zcoord1*/ = float.Parse(transformItems5.InnerText); }
+                                    if (transformItems5.Name == "xcoord") { wallsimulation.Xcoord1 = float.Parse(transformItems5.InnerText); }
+                                    if (transformItems5.Name == "ycoord") { wallsimulation.Zcoord1 = float.Parse(transformItems5.InnerText); }
                                 }
                             }
                             if ((varflag == true) && (transformItems4.Name == "point"))
@@ -121,15 +118,14 @@ public class CompileMCL : MonoBehaviour {
                                 XmlNodeList transformcontent5 = transformItems4.ChildNodes; //gets the tags inside point tag (xcoord and ycoord)
                                 foreach (XmlNode transformItems5 in transformcontent5)
                                 {
-                                    if (transformItems5.Name == "xcoord") { wallsimulation.Zcoord2/*wallsimulation.Xcoord2*/ = float.Parse(transformItems5.InnerText); }
-                                    if (transformItems5.Name == "ycoord") { wallsimulation.Xcoord2/*wallsimulation.Zcoord2*/ = float.Parse(transformItems5.InnerText); }
+                                    if (transformItems5.Name == "xcoord") { wallsimulation.Xcoord2 = float.Parse(transformItems5.InnerText); }
+                                    if (transformItems5.Name == "ycoord") { wallsimulation.Zcoord2 = float.Parse(transformItems5.InnerText); }
                                 }
                             }
                             varflag = !varflag;
                             if (transformItems4.Name == "door") { continue; }
                         }
                         wallsimulation.roomid = roomid;
-                     //   walls obstacleid?
                         ListofWalls.Add(wallsimulation);
                     }
                 }

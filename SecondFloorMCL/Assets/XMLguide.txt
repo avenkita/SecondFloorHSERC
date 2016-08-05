@@ -1,0 +1,16 @@
+XML Guide for SecondFloorMCL
+
+MCLyellow.xml
+- XML written by Aishwarya for July 25 meeting. Only the area within the yellow highlight in blueprint
+- Coordinates in meters, used pdf blueprint for reference. Some lengths were guessed
+
+MCLspaceUnity.xml
+- XML which has translated info from MCLyellow.xml meant for Unity transform values
+
+
+secondFloor2.xml
+- File Alexandr created: current has walls and a few obstacles
+- Using the Unity scale, it was evident that this space is about 20-23 times bigger than meter units
+
+secondfloorUnity.xml
+- XML which has translated info from secondFloor2.xml meant for Unity transform values

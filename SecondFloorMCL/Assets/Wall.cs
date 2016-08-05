@@ -17,10 +17,11 @@ public class Wall
     public float RotateY { set; get; }
     public float RotateZ { set; get; }
     public string roomid { set; get; }
+    public string obstacleid { set; get; }
 
 
- //   public float SwitchRotationY { set; get; }
- //   public float SwitchPositionX { set; get; }
- //   public float SwitchPositionY { set; get; }
- //   public float SwitchPositionZ { set; get; }
+    //   public float SwitchRotationY { set; get; }
+    //   public float SwitchPositionX { set; get; }
+    //   public float SwitchPositionY { set; get; }
+    //   public float SwitchPositionZ { set; get; }
 }

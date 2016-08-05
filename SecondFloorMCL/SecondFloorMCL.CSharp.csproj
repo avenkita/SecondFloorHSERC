@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ButtonGUI\ButtonClick.cs" />
     <Compile Include="Assets\CompileMCL.cs" />
     <Compile Include="Assets\CompileMCLAish.cs" />
     <Compile Include="Assets\ReadMCL.cs" />
@@ -75,6 +76,7 @@
     <None Include="Assets\Resources\MCLyellow.xml" />
     <None Include="Assets\Resources\secondFloor2.xml" />
     <None Include="Assets\Resources\secondfloorUnity.xml" />
+    <None Include="Assets\XMLguide.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

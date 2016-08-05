@@ -1,0 +1,37 @@
+<HSERCenvironment>
+	<Equipment>
+		<EquipmentID>3D Printer</EquipmentID>
+		<PositionX>5</PositionX>
+		<PositionY>0.5</PositionY>
+		<PositionZ>12</PositionZ>
+		<SizeX>1</SizeX>
+		<SizeY>1</SizeY>
+		<SizeZ>1</SizeZ>
+	</Equipment>
+</HSERCenvironment>
+
+<!-- 
+
+Comment Section:
+
+
+The above example will code for a 3D Printer whose center position in (X meters,Y meters,Z meters) is (5, 0.5, 12) and is 1m by 1m by 1m in size.
+It will be represented by a cube with those dimensions. Note that the origin (0,0,0) is predetermined. 
+Other pieces of equipment can be encoded by copying the text within the <Equipment> tag, pasting it in the same level as <Equipment> and modifying values as necessary. 
+
+
+other XML tags can include
+-Equipment Type
+-Room which it is placed in
+-Anything else of relevance
+
+Currently, for just the walls in the XML, the rooms have "roomid", which is the name of the room. This helps in categorization.
+In Unity, the walls belonging to one room will be placed under the room name, belonging to an empty GameObject for parenting.
+The equipment can also be put under its room in a similar fashion.
+With this method, the organization can be viewed from the hierarchy, and selected objects can be enabled or disabled from the Scene.
+
+Unity also has the option to add tags to objects. This is for organization as well. So perhaps things like equipment type, etc. could be a tag.
+
+Note that once the new XML tag categories are added, the code will have to be modified for them to be used appropriately.
+
+ -->

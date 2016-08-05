@@ -2,9 +2,6 @@
 using System.Collections;
 
 
-//Class that goes along with SmartCondoWalls.cs
-
-
 public class SCWalls
 {
     public string roomid { set; get; }

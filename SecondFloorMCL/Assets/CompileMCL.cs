@@ -48,21 +48,21 @@ public class CompileMCL : MonoBehaviour {
                 angle = -angle + 360; //add 360 to make the angle positive for string writing
                 //wall is created with xscale as length and zscale as thickness, then rotated in y.
                 xscale = length;
-                zscale = 2f;
+                zscale = 0.1f;
             }
             else
             {
-                if (xscale == 0) { xscale = zscale; zscale = 2f; angle = 90; }
-                else { zscale = 2f; angle = 0; } //if (zscale == 0)
+                if (xscale == 0) { xscale = zscale; zscale = 0.1f; angle = 90; }
+                else { zscale = 0.1f; angle = 0; } //if (zscale == 0)
             }
 
             //adding in other properties (Unity compatible) into the current wall class
             cw.Name = (wallnumber + 1).ToString();
             cw.PositionX = xposition.ToString();
-            cw.PositionY = "20";
+            cw.PositionY = "1";
             cw.PositionZ = zposition.ToString();
             cw.ScaleX = xscale.ToString();
-            cw.ScaleY = "40";
+            cw.ScaleY = "2";
             cw.ScaleZ = zscale.ToString();
             cw.RotateX = "0";
             cw.RotateY = angle.ToString();
@@ -131,8 +131,8 @@ public class CompileMCL : MonoBehaviour {
                                     XmlNodeList transformcontent5 = transformItems4.ChildNodes; //gets the tags inside point tag (xcoord and ycoord)
                                     foreach (XmlNode transformItems5 in transformcontent5)
                                     {
-                                        if (transformItems5.Name == "xcoord") { wallsimulation.Zcoord1 = float.Parse(transformItems5.InnerText); }
-                                        if (transformItems5.Name == "ycoord") { wallsimulation.Xcoord1 = float.Parse(transformItems5.InnerText); }
+                                        if (transformItems5.Name == "xcoord") { wallsimulation.Zcoord1 = float.Parse(transformItems5.InnerText)/22; }
+                                        if (transformItems5.Name == "ycoord") { wallsimulation.Xcoord1 = float.Parse(transformItems5.InnerText)/22; }
                                     }
                                 }
                                 if ((varflag == true) && (transformItems4.Name == "point")) //when varflag is true, the second point in the XML is extracted
@@ -140,8 +140,8 @@ public class CompileMCL : MonoBehaviour {
                                     XmlNodeList transformcontent5 = transformItems4.ChildNodes; //gets the tags inside point tag (xcoord and ycoord)
                                     foreach (XmlNode transformItems5 in transformcontent5)
                                     {
-                                        if (transformItems5.Name == "xcoord") { wallsimulation.Zcoord2 = float.Parse(transformItems5.InnerText); }
-                                        if (transformItems5.Name == "ycoord") { wallsimulation.Xcoord2 = float.Parse(transformItems5.InnerText); }
+                                        if (transformItems5.Name == "xcoord") { wallsimulation.Zcoord2 = float.Parse(transformItems5.InnerText)/22; }
+                                        if (transformItems5.Name == "ycoord") { wallsimulation.Xcoord2 = float.Parse(transformItems5.InnerText)/22; }
                                     }
                                 }
                                 varflag = !varflag; //at the end of each loop, the varflag value is set to the opposite

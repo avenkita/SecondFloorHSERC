@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ButtonGUI\ButtonClick.cs" />
+    <Compile Include="Assets\ButtonGUI\GetValues.cs" />
+    <Compile Include="Assets\ButtonGUI\Translation.cs" />
     <Compile Include="Assets\CompileMCL.cs" />
     <Compile Include="Assets\CompileMCLAish.cs" />
     <Compile Include="Assets\ReadMCL.cs" />

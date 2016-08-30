@@ -68,14 +68,17 @@
     <Compile Include="Assets\ButtonGUI\Translation.cs" />
     <Compile Include="Assets\CompileMCL.cs" />
     <Compile Include="Assets\CompileMCLAish.cs" />
+    <Compile Include="Assets\Equipment.cs" />
     <Compile Include="Assets\ReadMCL.cs" />
     <Compile Include="Assets\ReadMCLAish.cs" />
+    <Compile Include="Assets\ReadObstacles.cs" />
     <Compile Include="Assets\SCWalls.cs" />
     <Compile Include="Assets\Wall.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\MCLspaceUnity.xml" />
     <None Include="Assets\Resources\MCLyellow.xml" />
+    <None Include="Assets\Resources\XMLHSERC.xml" />
     <None Include="Assets\Resources\secondFloor2.xml" />
     <None Include="Assets\Resources\secondfloorUnity.xml" />
     <None Include="Assets\XMLguide.txt" />

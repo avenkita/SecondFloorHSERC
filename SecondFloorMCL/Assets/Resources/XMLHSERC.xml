@@ -1,15 +1,15 @@
 <HSERCenvironment>
 	<Equipment>
 		<EquipmentID>3D Printer</EquipmentID>
-		<RoomName> </RoomName>
-		<Movability> </Movability>
-		<PositionX>5</PositionX>
+		<RoomName>Room004</RoomName> <!-- Must correspond to the Room names from the Walls XML -->
+		<Movability>Movable</Movability> <!-- Accepts "Movable" or "Not Movable" (without quotations) -->
+		<PositionX>20</PositionX>
 		<PositionY>0.5</PositionY>
 		<PositionZ>12</PositionZ>
 		<SizeX>1</SizeX>
 		<SizeY>1</SizeY>
 		<SizeZ>1</SizeZ>
-		<Notes> </Notes>
+		<Notes> </Notes> <!-- Currently, this tag is not used. It could be used in the future (print something in the console, etc.) -->
 	</Equipment>
 </HSERCenvironment>
 

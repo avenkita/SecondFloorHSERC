@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Translation : MonoBehaviour {
 
-    public float speed = 0.00000001f;
+    public float speed = 0.001f;
 	// Use this for initialization
 	void Start () {
 	
@@ -11,6 +11,6 @@ public class Translation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(speed * Time.deltaTime, 0, 0);
+        transform.Translate(0, speed * Time.deltaTime, 0);
 	}
 }

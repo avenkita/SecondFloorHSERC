@@ -18,23 +18,23 @@
 Comment Section:
 
 
-The above example will code for a 3D Printer whose center position in (X meters,Y meters,Z meters) is (5, 0.5, 12) and is 1m by 1m by 1m in size.
+The above example will code for a 3D Printer whose center position in (X meters,Y meters,Z meters) is (20, 0.5, 12) and is 1m by 1m by 1m in size. (1 Unity unit = 1m)
 It will be represented by a cube with those dimensions. Note that the origin (0,0,0) is predetermined. 
-Other pieces of equipment can be encoded by copying the text within the <Equipment> tag, pasting it in the same level as <Equipment> and modifying values as necessary. 
+Other pieces of equipment can be encoded by copying the text within the <Equipment> tag, pasting it in the same level as the <Equipment> tags, and modifying values as necessary. 
 
 
 other XML tags can include
 -Equipment Type
 -Room which it is placed in
 -Anything else of relevance
+-Material color (for color coding if it makes visualizing easier)
 
 Currently, for just the walls in the XML, the rooms have "roomid", which is the name of the room. This helps in categorization.
 In Unity, the walls belonging to one room will be placed under the room name, belonging to an empty GameObject for parenting.
-The equipment can also be put under its room in a similar fashion.
+The equipment is now also put under its room in a similar fashion. Note that the ordering of script execution is important! In Unity, under Edit/Project Settings/Script Execution Order, ReadMCL is executed before ReadObstacles so that the parent GameObject of the room (created in ReadMCL) will be there for the obstacles, too.
 With this method, the organization can be viewed from the hierarchy, and selected objects can be enabled or disabled from the Scene.
 
-Unity also has the option to add tags to objects. This is for organization as well. So perhaps things like equipment type, etc. could be a tag.
-
-Note that once the new XML tag categories are added, the code will have to be modified for them to be used appropriately.
+Unity also has the option to add tags to objects. This is for organization as well. So perhaps things like equipment type, etc. could be a tag. As of now, movability is a tag.
+Note that once the new XML tag categories are added, the code will have to be modified for them to be used appropriately. If a tag is attached through a script, it must already be a part of the scene! Make sure you add a new tag of that tag before running it.
 
  -->
